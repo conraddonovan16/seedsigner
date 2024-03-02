@@ -27,12 +27,13 @@ from .view import View, Destination, BackStackView
 class ToolsMenuView(View):
     IMAGE = (" New seed", FontAwesomeIconConstants.CAMERA)
     DICE = ("New seed", FontAwesomeIconConstants.DICE)
+    COIN = ("New seed", FontAwesomeIconConstants.COIN)
     KEYBOARD = ("Calc 12th/24th word", FontAwesomeIconConstants.KEYBOARD)
     EXPLORER = "Address Explorer"
     ADDRESS = "Verify address"
 
     def run(self):
-        button_data = [self.IMAGE, self.DICE, self.KEYBOARD, self.EXPLORER, self.ADDRESS]
+        button_data = [self.IMAGE, self.DICE, self.COIN, self.KEYBOARD, self.EXPLORER, self.ADDRESS]
 
         selected_menu_num = self.run_screen(
             ButtonListScreen,
@@ -49,6 +50,9 @@ class ToolsMenuView(View):
 
         elif button_data[selected_menu_num] == self.DICE:
             return Destination(ToolsDiceEntropyMnemonicLengthView)
+
+        elif button_data[selected_menu_num] == self.COIN:
+            return Destination(ToolsCoinEntropyMnemonicLengthView)
 
         elif button_data[selected_menu_num] == self.KEYBOARD:
             return Destination(ToolsCalcFinalWordNumWordsView)
